@@ -1996,25 +1996,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      vui: ''
-    };
+    return {};
   },
   computed: {
     customers: function customers() {
       return this.$store.state.customer.customers;
-    },
-    showInput: function showInput() {
-      return this.vui;
     }
   },
   created: function created() {
     this.$store.dispatch('customer/fetch');
-  }
+  } // methods: {
+  //     showInput() {
+  //         return this.vui;
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -20340,33 +20338,7 @@ var render = function() {
     _c("div", { staticClass: "col-lg-12" }, [
       _c("div", { staticClass: "main-box clearfix" }, [
         _c("div", { staticClass: "table-responsive" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.vui,
-                expression: "vui"
-              }
-            ],
-            attrs: { type: "text", value: "" },
-            domProps: { value: _vm.vui },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.vui = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
           _c("table", { staticClass: "table user-list" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.showInput) +
-                "\n                    "
-            ),
             _vm._m(0),
             _vm._v(" "),
             _c(

@@ -14,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::limit(20)->get();
+        $customers = Customer::limit(20)->orderBy('id', 'desc')->get();
         return response()->json($customers);
     }
 

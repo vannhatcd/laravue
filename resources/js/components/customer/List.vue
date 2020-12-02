@@ -3,9 +3,7 @@
         <div class="col-lg-12">
             <div class="main-box clearfix">
                 <div class="table-responsive">
-                    <input type="text" v-model="vui" value="">
                     <table class="table user-list">
-                        {{ showInput }}
                         <thead>
                             <tr>
                                 <th><span>User</span></th>
@@ -73,20 +71,21 @@
     export default {
         data: () => {
             return {
-                vui:''
             }
         },
         computed: {
             customers () {
                return this.$store.state.customer.customers;
             },
-            showInput () {
-                return this.vui;
-            }
         },
         created: function () {
             this.$store.dispatch('customer/fetch');
-        }
+        },
+        // methods: {
+        //     showInput() {
+        //         return this.vui;
+        //     }
+        // }
     }
 </script>
 
