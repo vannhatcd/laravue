@@ -3,7 +3,9 @@
         <div class="col-lg-12">
             <div class="main-box clearfix">
                 <div class="table-responsive">
+                    <input type="text" v-model="vui" value="">
                     <table class="table user-list">
+                        {{ showInput }}
                         <thead>
                             <tr>
                                 <th><span>User</span></th>
@@ -14,20 +16,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in users" :key="user.id">
+                            <tr v-for="customer in customers" :key="customer.id">
                                 <td>
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    <a href="#" class="user-link">@{ user.nickname }</a>
-                                    <span class="user-subhead">Admin</span>
+                                    <img :src="'https://bootdey.com/img/Content/avatar/avatar' + customer.role_id + '.png'" alt="">
+                                    <a href="#" class="user-link">{{ customer.nickname }}</a>
+                                    <span class="user-subhead">{{ customer.realname }}</span>
                                 </td>
                                 <td>
-                                    2013/08/08
+                                    {{ customer.birthday }}
                                 </td>
                                 <td class="text-center">
-                                    <span class="label label-default">Inactive</span>
+                                    <span class="label label-default">{{ customer.role_id }}</span>
                                 </td>
                                 <td>
-                                    <a href="#">mila@kunis.com</a>
+                                    <a href="#">{{ customer.email }}</a>
                                 </td>
                                 <td style="width: 20%;">
                                     <a href="#" class="table-link">
@@ -53,7 +55,7 @@
                         </tbody>
                     </table>
                 </div>
-                <ul class="pagination pull-right">
+                <!-- <ul class="pagination pull-right">
                     <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
                     <li><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
@@ -61,7 +63,7 @@
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
                     <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -69,15 +71,22 @@
 
 <script>
     export default {
-        name: 'List',
-        data: function() {
-	        return {}
-        },
-       computed: {
-            users () {
-               return this.$store.state.user.users;
+        data: () => {
+            return {
+                vui:''
             }
         },
+        computed: {
+            customers () {
+               return this.$store.state.customer.customers;
+            },
+            showInput () {
+                return this.vui;
+            }
+        },
+        created: function () {
+            this.$store.dispatch('customer/fetch');
+        }
     }
 </script>
 

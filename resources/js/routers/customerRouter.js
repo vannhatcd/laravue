@@ -1,8 +1,10 @@
+import CustomerList from '../components/customer/List';
+
 const customerRouter = [
     {
         path: '/customers',
-        component: () => import ('../components/customer/List'),
-        name: 'customerIndex',
+        component: CustomerList,
+        name: 'customer',
     }
 ];
 
